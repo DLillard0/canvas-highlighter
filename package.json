@@ -1,0 +1,53 @@
+{
+  "name": "canvas-highlighter",
+  "version": "0.0.2",
+  "description": "A lib for text highlighting by using Canvas.",
+  "type": "module",
+  "files": [
+    "src",
+    "lib"
+  ],
+  "main": "./lib/index.umd.cjs",
+  "module": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./lib/index.js",
+      "require": "./lib/index.umd.cjs"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DLillard0/canvas-highlighter"
+  },
+  "keywords": [
+    "text",
+    "highlight"
+  ],
+  "author": "DLillard0",
+  "license": "MIT",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.36.1",
+    "@typescript-eslint/parser": "^5.36.1",
+    "eslint": "^8.23.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.5",
+    "eslint-plugin-promise": "^6.0.1",
+    "typescript": "^4.8.2",
+    "vite": "^3.0.9",
+    "vite-plugin-dts": "^1.4.1",
+    "vite-plugin-eslint": "^1.6.0"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "dependencies": {
+    "konva": "^8.3.12"
+  }
+}

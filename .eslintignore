@@ -1,0 +1,5 @@
+.*
+~*
+*.html
+node_modules
+lib
