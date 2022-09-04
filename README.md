@@ -53,15 +53,15 @@ document.addEventListener('click', (event) => {
 
 #### 1. 划词点击高亮
 
-[在线演示]()
+[在线演示](https://dlillard0.github.io/canvas-highlighter/)
 
-[源码]()
+[源码](https://github.com/DLillard0/canvas-highlighter/blob/main/docs/index.html)
 
-#### 2. 划词评论功能
+#### 2. 实现类似语雀的划词评论功能
 
-[在线演示]()
+[在线演示](https://dlillard0.github.io/canvas-highlighter/yuque.html)
 
-[源码]()
+[源码](https://github.com/DLillard0/canvas-highlighter/blob/main/docs/yuque.html)
 
 ## API
 
