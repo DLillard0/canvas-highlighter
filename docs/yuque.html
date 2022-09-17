@@ -137,7 +137,7 @@
               this.range.config.rect.visible = false
               // 高亮选中区域
               this.highlighter.addRange(this.range)
-            }).catch(() => {})
+            }).catch((err) => { throw(err) })
           }
           this.style.display = 'none'
         },
@@ -175,7 +175,7 @@
 
         document.addEventListener('click', (event) => {
           // 通过传入点击位置获取 range id
-          const id = this.highlighter.geRangeIdByPointer(event.pageX, event.pageY)
+          const id = this.highlighter.geRangeIdByPointer(event.clientX, event.clientY)
           // 隐藏上一个激活的 range
           let range = this.highlighter.getRange(this.active)
           if (range) {
