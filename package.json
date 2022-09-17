@@ -1,6 +1,6 @@
 {
   "name": "canvas-highlighter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A lib for text highlighting by using Canvas.",
   "type": "module",
   "files": [

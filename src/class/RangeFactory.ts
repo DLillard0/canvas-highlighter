@@ -135,7 +135,7 @@ export default class RangeFactory {
       rects.push(...getTextNodeRects(startNode, start.offset))
       textNodes.forEach(i => {
         const nodeRects = getTextNodeRects(i)
-        if (nodeRects.length === 0 && (nodeRects[0].width === 0 || nodeRects[0].height === 0)) {
+        if (nodeRects.length === 1 && (nodeRects[0].width === 0 || nodeRects[0].height === 0)) {
           // 过滤空 Text
         } else {
           rects.push(...nodeRects)

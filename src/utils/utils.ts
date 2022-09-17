@@ -23,43 +23,10 @@ export function getTextNodeRects(node: Text, startOffset?: number, endOffset?: n
   if (startOffset === undefined) startOffset = 0
   if (endOffset === undefined) endOffset = node.textContent!.length
 
-  const ranges = splitRange(node, startOffset, endOffset)
-  return ranges.map(i => i.getBoundingClientRect())
-}
-
-// 将一个跨行的 range 切割为多个不跨行的 range
-function splitRange(node: Text, startOffset: number, endOffset: number): Range[] {
   const range = document.createRange()
-  const rowTop = getCharTop(node, startOffset)
-  // 字符数小于两个不用判断是否跨行
-  // 头尾高度一致说明在同一行
-  if ((endOffset - startOffset < 2) || rowTop === getCharTop(node, endOffset - 1)) {
-    range.setStart(node, startOffset)
-    range.setEnd(node, endOffset)
-    return [range]
-  } else {
-    const last = findRowLastChar(rowTop, node, startOffset, endOffset - 1)
-    range.setStart(node, startOffset)
-    range.setEnd(node, last + 1)
-    const others = splitRange(node, last + 1, endOffset)
-    return [range, ...others]
-  }
-}
-
-// 二分法找到 range 某一行的最右字符
-function findRowLastChar(top: number, node: Text, start: number, end: number): number {
-  if (end - start === 1) {
-    return getCharTop(node, end) === top ? end : start
-  }
-  const mid = (end + start) >> 1
-  return getCharTop(node, mid) === top
-    ? findRowLastChar(top, node, mid, end)
-    : findRowLastChar(top, node, start, mid)
-}
-
-// 获取 range 某个字符位置的 top 值
-function getCharTop(node: Text, offset: number) {
-  return getCharRect(node, offset).top
+  range.setStart(node, startOffset)
+  range.setEnd(node, endOffset)
+  return Array.from(range.getClientRects())
 }
 
 // 获取 range 某个字符位置的 DOMRect
