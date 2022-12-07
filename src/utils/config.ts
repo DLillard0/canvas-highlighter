@@ -10,6 +10,8 @@ export interface IConfig {
   lineStroke: string
   // 线段默认的宽度
   strokeWidth: number
+  // canvas 渲染像素比
+  pixelRatio?: number
 }
 
 export const defaultConfig: IConfig = {

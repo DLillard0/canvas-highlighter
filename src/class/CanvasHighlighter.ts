@@ -20,7 +20,7 @@ class CanvasHighlighter implements ICanvasHighlighter {
       ...config
     }
     this.root.style.position = this.config.position
-    this.stage = new Stage(this.root)
+    this.stage = new Stage(this.root, this.config.pixelRatio)
     this.rangeFactory = new RangeFactory(this.root, this.config)
 
     this.observeResize()

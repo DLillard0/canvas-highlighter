@@ -24,7 +24,7 @@ export default class Stage {
     positions: IRectPosition[]
   }> = []
 
-  constructor(root: HTMLElement) {
+  constructor(root: HTMLElement, pixelRatio?: number) {
     this.root = root
 
     this.container = this.createContainer()
@@ -36,6 +36,7 @@ export default class Stage {
       height
     })
     this.layer = new Konva.Layer()
+    if (pixelRatio) this.layer.getCanvas().setPixelRatio(pixelRatio)
     this.stage.add(this.layer)
   }
 

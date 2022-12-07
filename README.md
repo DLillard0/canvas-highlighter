@@ -80,6 +80,7 @@ document.addEventListener('click', (event) => {
 | rectFill | 矩形默认填充颜色 | string | rgba(255, 170, 0, 0.2) |
 | lineStroke | 线段默认填充颜色 | string | rgba(255, 170, 0, 1) |
 | strokeWidth | 线段默认的宽度 | number | 2 |
+| pixelRatio | canvas 渲染像素比，当 canvas 元素占用内存过大时可以设置小一点来减少内存占用 | number | — |
 
 ### instance methods
 
