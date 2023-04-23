@@ -175,7 +175,7 @@
 
         document.addEventListener('click', (event) => {
           // 通过传入点击位置获取 range id
-          const id = this.highlighter.geRangeIdByPointer(event.clientX, event.clientY)
+          const id = this.highlighter.getRangeIdByPointer(event.clientX, event.clientY)
           // 隐藏上一个激活的 range
           let range = this.highlighter.getRange(this.active)
           if (range) {

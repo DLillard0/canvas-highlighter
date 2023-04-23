@@ -163,7 +163,7 @@
         })
 
         document.addEventListener('click', (event) => {
-          const id = this.highlighter.geRangeIdByPointer(event.clientX, event.clientY)
+          const id = this.highlighter.getRangeIdByPointer(event.clientX, event.clientY)
           let range = this.highlighter.getRange(this.active)
           if (range) {
             range.config.rect.visible = false

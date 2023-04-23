@@ -116,7 +116,7 @@ export default class Stage {
     })
   }
 
-  geGroupIdByPointer(x: number, y: number) {
+  getGroupIdByPointer(x: number, y: number) {
     const { top, left } = this.getRootPosition()
     x = x - left
     y = y - top

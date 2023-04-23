@@ -80,5 +80,5 @@ export interface ICanvasHighlighter {
   /**
    * 根据页面坐标点判断处于哪个 range 范围内，返回该 id
    */
-  geRangeIdByPointer(x: number, y:number): string | null
+  getRangeIdByPointer(x: number, y:number): string | null
 }

@@ -92,8 +92,8 @@ class CanvasHighlighter implements ICanvasHighlighter {
     this.renderRanges(this.ranges)
   }
 
-  geRangeIdByPointer(x: number, y: number) {
-    return this.stage.geGroupIdByPointer(x, y)
+  getRangeIdByPointer(x: number, y: number) {
+    return this.stage.getGroupIdByPointer(x, y)
   }
 }
 

@@ -45,7 +45,7 @@ highlighter.addRange(range)
 ```javascript
 document.addEventListener('click', (event) => {
   // 通过传入点击位置获取 range id
-  const id = highlighter.geRangeIdByPointer(event.pageX, event.pageY)
+  const id = highlighter.getRangeIdByPointer(event.pageX, event.pageY)
 })
 ```
 
@@ -135,7 +135,7 @@ clear(): void
 /**
  * 根据页面坐标点判断处于哪个 range 范围内，返回该 id
  */
-geRangeIdByPointer(x: number, y:number): string | null
+getRangeIdByPointer(x: number, y:number): string | null
 ```
 
 ### Range
