@@ -136,6 +136,11 @@ clear(): void
  * 根据页面坐标点判断处于哪个 range 范围内，返回该 id
  */
 getRangeIdByPointer(x: number, y:number): string | null
+
+/**
+ * 根据页面坐标点判断处于哪个 range 范围内，返回所有 range 的 id
+ */
+getAllRangeIdByPointer(x: number, y: number): string[]
 ```
 
 ### Range

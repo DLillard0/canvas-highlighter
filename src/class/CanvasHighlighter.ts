@@ -95,6 +95,10 @@ class CanvasHighlighter implements ICanvasHighlighter {
   getRangeIdByPointer(x: number, y: number) {
     return this.stage.getGroupIdByPointer(x, y)
   }
+
+  getAllRangeIdByPointer(x: number, y: number) {
+    return this.stage.getAllGroupIdByPointer(x, y)
+  }
 }
 
 export default CanvasHighlighter

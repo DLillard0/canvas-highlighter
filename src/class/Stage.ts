@@ -137,6 +137,22 @@ export default class Stage {
     }
   }
 
+  getAllGroupIdByPointer(x: number, y: number) {
+    const { top, left } = this.getRootPosition()
+    x = x - left
+    y = y - top
+    return this.groups.filter(i => {
+      return i.positions.some(j => {
+        return (
+          x >= j.x &&
+          x <= j.x + j.width &&
+          y >= j.y &&
+          y <= j.y + j.height
+        )
+      })
+    }).map(i => i.group.id())
+  }
+
   private getRootPosition() {
     return this.root.getBoundingClientRect()
   }
