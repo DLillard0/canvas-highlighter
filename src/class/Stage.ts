@@ -29,11 +29,12 @@ export default class Stage {
 
     this.container = this.createContainer()
     root.appendChild(this.container)
-    const { width, height } = this.getRootPosition()
+    // let { width, height } = this.getRootPosition()
+  
     this.stage = new Konva.Stage({
       container: this.container,
-      width,
-      height
+      width:window.innerWidth,
+      height:window.innerHeight
     })
     this.layer = new Konva.Layer()
     if (pixelRatio) this.layer.getCanvas().setPixelRatio(pixelRatio)
@@ -42,7 +43,7 @@ export default class Stage {
 
   private createContainer() {
     const el = document.createElement('div')
-    el.style.position = 'absolute'
+    el.style.position = 'fixed'
     el.style.top = '0'
     el.style.left = '0'
     el.style.right = '0'
@@ -54,11 +55,23 @@ export default class Stage {
   renderRange(domRects: DOMRect[], id: string, config: IRangeConfig) {
     const { group, rectGroup, lineGroup } = this.createGroup(id, config)
 
-    const { top, left } = this.getRootPosition()
+    //无需减去这个值，当前蒙层的坐标系已经是相对于视口的
+    // const { top, left } = this.getRootPosition()
     const positions: IRectPosition[] = []
+    //给canvas画布加个边框
+    const border = new Konva.Rect({
+      x: 0,
+      y: 0,
+      width: this.stage.width(),
+      height: this.stage.height(),
+      stroke: 'red',
+      strokeWidth: 1
+    })
+    group.add(border)
+
     domRects.forEach(i => {
-      const x = i.left - left
-      const y = i.top - top
+      const x = i.left
+      const y = i.top
       const position = {
         x,
         y,

@@ -4,7 +4,6 @@
   "description": "A lib for text highlighting by using Canvas.",
   "type": "module",
   "files": [
-    "src",
     "lib"
   ],
   "main": "./lib/index.umd.cjs",
@@ -48,6 +47,7 @@
     "node": ">=16"
   },
   "dependencies": {
-    "konva": "^8.3.12"
+    "konva": "^8.3.12",
+    "prettier": "3.0.0-alpha.7-for-vscode"
   }
 }

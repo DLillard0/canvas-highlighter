@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,23 +11,38 @@
     body {
       padding: 20px;
     }
+
     .tip {
       font-size: 20px;
       color: #409EFF;
     }
+
     #container {
       padding: 16px;
       border: 1px solid #999;
       border-radius: 4px;
       line-height: 1.8;
     }
-    #app > .el-button {
+
+    #app>.el-button {
       position: absolute;
       display: none;
     }
+
+    #wrap {
+      position: fixed;
+      background-color: #c825251d;
+      height: 100vh;
+      width: 100%;
+    }
   </style>
 </head>
+
 <body>
+
+  <div id="wrap"> </div>
+
+
   <p class="tip">尝试在下方区域进行划词评论</p>
   <p class="tip">尝试点击划词区域内容</p>
   <section>
@@ -37,38 +53,37 @@
         燕子去了，有再来的时候杨柳枯了，有再青的时候桃花谢了，有再开的时候。但是聪明的你告诉我，我们的日子为什么一去不复返呢？是有人偷了他 们罢：那是谁？又藏在何处呢？是他们自己逃走了罢如今又到了哪里呢？
       </p>
       <p>
-        我不知道他们给了我多少日子，但我的手<span style="font-size: 20px; color: #F56C6C;">确乎</span>是渐渐<span style="font-size: 20px; color: #F56C6C;">空虚</span>了。在默默里算着，八千多日子已经从我手中溜去，像针尖上一滴水滴在大海里，我的日子滴在时间的流里，没有声音，也没有影子。我不禁头<span style="font-size: 20px; color: #F56C6C;">涔涔</span>而泪<span style="font-size: 20px; color: #F56C6C;">潸潸</span>了。去的尽管去了，来的尽管来着，去来的中间，又怎样地匆匆呢？
+        我不知道他们给了我多少日子，但我的手<span style="font-size: 20px; color: #F56C6C;">确乎</span>是渐渐<span
+          style="font-size: 20px; color: #F56C6C;">空虚</span>了。在默默里算着，八千多日子已经从我手中溜去，像针尖上一滴水滴在大海里，我的日子滴在时间的流里，没有声音，也没有影子。我不禁头<span
+          style="font-size: 20px; color: #F56C6C;">涔涔</span>而泪<span
+          style="font-size: 20px; color: #F56C6C;">潸潸</span>了。去的尽管去了，来的尽管来着，去来的中间，又怎样地匆匆呢？
       </p>
       <p>
         早上我起来的时候，小屋里射进两三方斜斜的太阳。太阳他有脚啊，轻轻悄悄地挪移了，我也茫茫然跟着旋转。于是洗手的时候，日子从水盆里过去，吃饭的时候，日子从饭碗里过去，默默时，便从凝然的双眼前过去。我觉察他去的匆匆了，伸出手遮挽时，他又从遮挽着的手边过去。
       </p>
       <p>
-        天黑时，我躺在床上，他便<span style="font-size: 20px; color: #F56C6C;">伶伶俐俐</span>地从我身上跨过，从我脚边飞去了。等我睁开眼和太阳再见，这算又溜走了一日。我掩着面叹息。但是新来的日子的影儿又开始在叹息里闪过了。在逃去如飞的日子里，在千门万户的世界里的我能做些什么呢？
+        天黑时，我躺在床上，他便<span
+          style="font-size: 20px; color: #F56C6C;">伶伶俐俐</span>地从我身上跨过，从我脚边飞去了。等我睁开眼和太阳再见，这算又溜走了一日。我掩着面叹息。但是新来的日子的影儿又开始在叹息里闪过了。在逃去如飞的日子里，在千门万户的世界里的我能做些什么呢？
       </p>
       <p>
-        只有<span style="font-size: 20px; color: #F56C6C;">徘徊罢了</span>，只有匆匆罢了，在八千多日的匆匆里，除徘徊外，又剩些什么呢？过去的日子如轻烟，被微风吹散了，如薄雾，被初阳蒸融了。我留着些什么痕迹呢？我何曾留着像<span style="font-size: 20px; color: #F56C6C;">游丝</span>样的痕迹呢？
+        只有<span
+          style="font-size: 20px; color: #F56C6C;">徘徊罢了</span>，只有匆匆罢了，在八千多日的匆匆里，除徘徊外，又剩些什么呢？过去的日子如轻烟，被微风吹散了，如薄雾，被初阳蒸融了。我留着些什么痕迹呢？我何曾留着像<span
+          style="font-size: 20px; color: #F56C6C;">游丝</span>样的痕迹呢？
       </p>
       <p>
         我赤裸裸来到这世界，转眼间也将赤裸裸的回去罢？但不能平的，为什么偏要白白走这一遭啊？你聪明的，告诉我，我们的日子为什么一去不复返呢？
       </p>
+
     </div>
     <button class="btn btn-primary btn-sm action" style="position: absolute; display: none;" type="button">评论</button>
   </section>
   <div id="app">
-    <el-table
-      :data="list"
-      style="width: 100%"
-      :row-style="activeStyle">
-      <el-table-column
-        prop="range.text"
-        label="划词内容">
+    <el-table :data="list" style="width: 100%" :row-style="activeStyle">
+      <el-table-column prop="range.text" label="划词内容">
       </el-table-column>
-      <el-table-column
-        prop="text"
-        label="评论内容">
+      <el-table-column prop="text" label="评论内容">
       </el-table-column>
-      <el-table-column
-        label="操作">
+      <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button type="danger" size="mini" @click="handleDelete(scope.row.id)">删除</el-button>
         </template>
@@ -122,10 +137,10 @@
         active: ''
       },
       methods: {
-        activeStyle (data) {
+        activeStyle(data) {
           return data.row.id === this.active ? { background: '#ecf5ff' } : {}
         },
-        click () {
+        click() {
           if (this.range) {
             this.$prompt('请输入评论内容', '评论').then(({ value }) => {
               this.list.push({
@@ -135,19 +150,21 @@
               })
               this.range.config.rect.visible = false
               this.highlighter.addRange(this.range)
-            }).catch((err) => { throw(err) })
+            }).catch((err) => { throw (err) })
           }
           this.style.display = 'none'
         },
-        handleDelete (id) {
+        handleDelete(id) {
           const index = this.list.findIndex(i => i.id === id)
           this.list.splice(index, 1)
           this.highlighter.deleteRange(id)
         }
       },
       mounted() {
+        console.log('mounted')
         const container = document.getElementById('container')
         this.highlighter = new CanvasHighlighter(container)
+        console.log(this.list)
         this.highlighter.renderRanges(this.list.map(i => i.range))
         this.active = this.list[0].id
         container.addEventListener('mouseup', () => {
@@ -181,4 +198,5 @@
     })
   </script>
 </body>
+
 </html>
