@@ -161,10 +161,8 @@
         }
       },
       mounted() {
-        console.log('mounted')
         const container = document.getElementById('container')
         this.highlighter = new CanvasHighlighter(container)
-        console.log(this.list)
         this.highlighter.renderRanges(this.list.map(i => i.range))
         this.active = this.list[0].id
         container.addEventListener('mouseup', () => {

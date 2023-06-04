@@ -114,22 +114,6 @@ export default class RangeFactory {
 
     return parentNode ? path : null
   }
-
-   isInViewport(element:Element) {
-    const rect = (element as any).getBoundingClientRect();
-    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-    const windowWidth = window.innerWidth || document.documentElement.clientWidth;
-  console.log(   rect.top >= 0 &&
-    rect.left >= 0 &&
-    rect.bottom <= windowHeight &&
-    rect.right <= windowWidth)
-    return (
-      rect.top >= 0 &&
-      rect.left >= 0 &&
-      rect.bottom <= windowHeight &&
-      rect.right <= windowWidth
-    );
-  }
   
 
   createRects(range: IRange) {
@@ -137,7 +121,6 @@ export default class RangeFactory {
     const { start, end } = range
     const startNode = this.getNodeByPath(start.path)
     const endNode = this.getNodeByPath(end.path)
-    console.log(startNode,endNode)
     if (
       !startNode ||
       !endNode ||
