@@ -1,0 +1,36 @@
+{
+    "files.encoding": "utf8",
+    "editor.formatOnSave": true,
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true,
+      "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+      }
+    },
+    "typescript.format.semicolons": "remove", 
+    "typescript.preferences.quoteStyle": "single",
+    "eslint.options": {
+      "root": true,
+      "parser": "@typescript-eslint/parser",
+      "plugins": [
+        "@typescript-eslint"
+      ],
+      "extends": [
+        "standard",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/eslint-recommended"
+      ],
+      "rules": {
+        "space-before-function-paren": ["error", "never"],
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "arrow-parens": ["error", "as-needed"],
+        "arrow-body-style": ["error", "always"]
+      }
+      },
+      "editor.language.brackets": [
+      
+      ]
+  }
+  

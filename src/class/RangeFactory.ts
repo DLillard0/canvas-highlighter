@@ -114,13 +114,13 @@ export default class RangeFactory {
 
     return parentNode ? path : null
   }
+  
 
   createRects(range: IRange) {
     const rects: DOMRect[] = []
     const { start, end } = range
     const startNode = this.getNodeByPath(start.path)
     const endNode = this.getNodeByPath(end.path)
-
     if (
       !startNode ||
       !endNode ||

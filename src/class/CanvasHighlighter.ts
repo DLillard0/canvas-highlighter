@@ -22,8 +22,8 @@ class CanvasHighlighter implements ICanvasHighlighter {
     this.root.style.position = this.config.position
     this.stage = new Stage(this.root, this.config.pixelRatio)
     this.rangeFactory = new RangeFactory(this.root, this.config)
-
     this.observeResize()
+    this.observeScroll()
   }
 
   getSelectionRange(selection?: Selection | null): IRange | null {
@@ -51,12 +51,12 @@ class CanvasHighlighter implements ICanvasHighlighter {
   }
 
   getRange(id: string): IRange | null {
-    const range = this.ranges.find(i => i.id === id)
+    const range = this.ranges.find((i) => i.id === id)
     return range || null
   }
 
   deleteRange(id: string) {
-    const index = this.ranges.findIndex(i => i.id === id)
+    const index = this.ranges.findIndex((i) => i.id === id)
     if (index === -1) return false
     this.ranges.splice(index, 1)
     this.stage.deleteRange(id)
@@ -74,7 +74,7 @@ class CanvasHighlighter implements ICanvasHighlighter {
 
   renderRanges(ranges: IRange[]) {
     this.clear()
-    ranges.forEach(i => this.addRange(i))
+    ranges.forEach((i) => this.addRange(i))
   }
 
   clear(): void {
@@ -83,8 +83,21 @@ class CanvasHighlighter implements ICanvasHighlighter {
   }
 
   private observeResize() {
-    const observer = new ResizeObserver(debounce(this.handleResize.bind(this), this.config.delay))
+    const observer = new ResizeObserver(
+      debounce(this.handleResize.bind(this), this.config.delay)
+    )
     observer.observe(this.root)
+  }
+
+  private observeScroll() {
+   window.addEventListener(
+      'scroll',
+      debounce(this.handleScroll.bind(this), 10)
+    )
+  }
+
+  private handleScroll() {
+    this.renderRanges(this.ranges)
   }
 
   private handleResize() {
@@ -97,7 +110,7 @@ class CanvasHighlighter implements ICanvasHighlighter {
   }
 
   getAllRangeIdByPointer(x: number, y: number) {
-    return this.stage.getAllGroupIdByPointer(x, y)
+    return this.stage.getAllGroupIdByPointer(x, y)  
   }
 }
 

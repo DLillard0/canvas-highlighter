@@ -16,8 +16,9 @@ export default defineConfig({
       formats: ['es', 'iife', 'umd']
     }
   },
+  hmr:true,
   plugins: [{
     apply: 'build',
-    ...eslint()
+    // ...eslint()
   }, dts()]
 })

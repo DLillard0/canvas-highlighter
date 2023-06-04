@@ -12,6 +12,8 @@ module.exports = {
   rules: {
     'space-before-function-paren': ['error', 'never'],
     '@typescript-eslint/no-non-null-assertion': 'off',
-    '@typescript-eslint/no-explicit-any': 'off'
+    '@typescript-eslint/no-explicit-any': 'off',
+    'arrow-parens': ["error", "as-needed"],
+    'arrow-body-style': ["error", "always"]
   }
 }
