@@ -30,7 +30,8 @@ export default class Stage {
     this.container = this.createContainer()
     root.appendChild(this.container)
     // let { width, height } = this.getRootPosition()
-  
+  console.log('window.innerWidth',window.innerWidth)
+  console.log('window.innerHeight',window.innerHeight)
     this.stage = new Konva.Stage({
       container: this.container,
       width:window.innerWidth,
@@ -59,11 +60,13 @@ export default class Stage {
     // const { top, left } = this.getRootPosition()
     const positions: IRectPosition[] = []
     //给canvas画布加个边框
+    console.log('window.innerWidth--',window.innerWidth)
+    console.log('window.innerHeight--',window.innerHeight)
     const border = new Konva.Rect({
       x: 0,
       y: 0,
-      width: this.stage.width(),
-      height: this.stage.height(),
+      width: window.innerWidth,
+      height: window.innerHeight,
       stroke: 'red',
       strokeWidth: 1
     })
@@ -184,7 +187,7 @@ export default class Stage {
   }
 
   updateStageSize() {
-    const { width, height } = this.getRootPosition()
-    this.stage.setSize({ width, height })
+    // const { width, height } = this.getRootPosition()
+    this.stage.setSize({ width:window.innerWidth, height:window.innerHeight })
   }
 }

@@ -48,6 +48,7 @@
   },
   "dependencies": {
     "konva": "^8.3.12",
-    "prettier": "3.0.0-alpha.7-for-vscode"
+    "prettier": "3.0.0-alpha.7-for-vscode",
+    "yalc": "^1.0.0-pre.53"
   }
 }
