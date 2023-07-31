@@ -1,5 +1,14 @@
 import Konva from 'konva'
 
+export interface IRectPosition {
+  x: number
+  y: number
+  width: number
+  height: number
+}
+
+export type ShapeConstructor = (position: IRectPosition) => Konva.Shape
+
 export interface IRangeNode {
   path: number[]
   offset: number

@@ -49,6 +49,35 @@ document.addEventListener('click', (event) => {
 })
 ```
 
+### 添加自定义图形
+
+默认只会在划词区域渲染一个 Rect 和底部渲染一个 Line，如果需要在划词区域添加其他图形，可以传入 shapeConstructors 参数，shapeConstructors 是一个 ShapeConstructor 类型的数组，ShapeConstructor 是一个函数，接收一个划词区域位置信息的参数，需要返回一个 konva Shape 类型的实例对象
+
+```javascript
+import Konva from 'konva'
+import CanvasHighlighter, { IRectPosition } from 'canvas-highlighter'
+
+// 注意：并不是一个划词区域只会调用一次 createLine 函数，因为划词区域可能被拆分成多个（比如字体大小不同导致的划词区域高度不同），所以 createLine 函数可能会被调用多次
+function createLine(position: IRectPosition) {
+  const { x, y, width, height } = position
+  return new Konva.Line({
+    points: [
+      x,
+      y + height + 4,
+      x + width,
+      y + height + 4
+    ],
+    stroke: 'red',
+    strokeWidth: 2
+  })
+}
+
+// 添加一个自定义 Line 线段凑成双下划线
+const container = document.getElementById('container', {
+  shapeConstructors: [createLine]
+})
+```
+
 ### 更多例子
 
 #### 1. 划词点击高亮
@@ -80,6 +109,7 @@ document.addEventListener('click', (event) => {
 | rectFill | 矩形默认填充颜色 | string | rgba(255, 170, 0, 0.2) |
 | lineStroke | 线段默认填充颜色 | string | rgba(255, 170, 0, 1) |
 | strokeWidth | 线段默认的宽度 | number | 2 |
+| shapeConstructors | 自定义图形构造函数数组 | ShapeConstructor[] | — |
 | pixelRatio | canvas 渲染像素比，当 canvas 元素占用内存过大时可以设置小一点来减少内存占用 | number | — |
 
 ### instance methods

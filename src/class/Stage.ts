@@ -1,19 +1,15 @@
 import Konva from 'konva'
-import { IRangeConfig } from '../utils/types'
+import { IRectPosition, IRangeConfig } from '../utils/types'
+import { IConfig } from '../utils/config'
 
 const RECT_PREFIX = 'rect-'
 const LINE_PREFIX = 'line-'
-
-export interface IRectPosition {
-  x: number
-  y: number
-  width: number
-  height: number
-}
+const SHAPE_PREFIX = 'shape-'
 
 export default class Stage {
   private root: HTMLElement
   private container: HTMLDivElement
+  private config: IConfig
 
   private stage: Konva.Stage
   private layer: Konva.Layer
@@ -24,8 +20,9 @@ export default class Stage {
     positions: IRectPosition[]
   }> = []
 
-  constructor(root: HTMLElement, pixelRatio?: number) {
+  constructor(root: HTMLElement, config: IConfig) {
     this.root = root
+    this.config = config
 
     this.container = this.createContainer()
     root.appendChild(this.container)
@@ -36,7 +33,7 @@ export default class Stage {
       height
     })
     this.layer = new Konva.Layer()
-    if (pixelRatio) this.layer.getCanvas().setPixelRatio(pixelRatio)
+    if (this.config.pixelRatio) this.layer.getCanvas().setPixelRatio(this.config.pixelRatio)
     this.stage.add(this.layer)
   }
 
@@ -52,7 +49,7 @@ export default class Stage {
   }
 
   renderRange(domRects: DOMRect[], id: string, config: IRangeConfig) {
-    const { group, rectGroup, lineGroup } = this.createGroup(id, config)
+    const { group, rectGroup, lineGroup, shapeGroup } = this.createGroup(id, config)
 
     const { top, left } = this.getRootPosition()
     const positions: IRectPosition[] = []
@@ -67,6 +64,12 @@ export default class Stage {
       }
       positions.push(position)
 
+      const shapeConstructors = this.config.shapeConstructors
+      if (shapeGroup && shapeConstructors) {
+        shapeConstructors.forEach(fn => {
+          shapeGroup.add(fn(position))
+        })
+      }
       rectGroup.add(this.createRect(position, config.rect))
       lineGroup.add(this.createLine(position, config.line))
     })
@@ -88,9 +91,19 @@ export default class Stage {
       y: 0,
       visible: config.line.visible
     })
+    const shapeConstructors = this.config.shapeConstructors
+    let shapeGroup: Konva.Group | null = null
+    if (shapeConstructors && shapeConstructors.length > 0) {
+      shapeGroup = new Konva.Group({
+        id: SHAPE_PREFIX + id,
+        x: 0,
+        y: 0
+      })
+      group.add(shapeGroup)
+    }
     group.add(rectGroup)
     group.add(lineGroup)
-    return { group, rectGroup, lineGroup }
+    return { group, rectGroup, lineGroup, shapeGroup }
   }
 
   private createRect(position: IRectPosition, config: IRangeConfig['rect']) {

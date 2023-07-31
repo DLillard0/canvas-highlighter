@@ -1,3 +1,4 @@
+import { ShapeConstructor } from '../utils/types'
 
 export interface IConfig {
   // container 要设置的 position 属性
@@ -10,6 +11,8 @@ export interface IConfig {
   lineStroke: string
   // 线段默认的宽度
   strokeWidth: number
+  // 自定义图形构造函数数组
+  shapeConstructors?: ShapeConstructor[]
   // canvas 渲染像素比
   pixelRatio?: number
 }
