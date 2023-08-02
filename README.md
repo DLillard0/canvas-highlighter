@@ -72,8 +72,9 @@ function createLine(position: IRectPosition) {
   })
 }
 
+const container = document.getElementById('container')
 // 添加一个自定义 Line 线段凑成双下划线
-const container = document.getElementById('container', {
+const highlighter = new CanvasHighlighter(container, {
   shapeConstructors: [createLine]
 })
 ```
