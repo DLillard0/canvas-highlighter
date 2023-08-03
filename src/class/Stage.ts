@@ -53,7 +53,7 @@ export default class Stage {
 
     const { top, left } = this.getRootPosition()
     const positions: IRectPosition[] = []
-    domRects.forEach(i => {
+    domRects.forEach((i, index) => {
       const x = i.left - left
       const y = i.top - top
       const position = {
@@ -67,7 +67,7 @@ export default class Stage {
       const shapeConstructors = this.config.shapeConstructors
       if (shapeGroup && shapeConstructors) {
         shapeConstructors.forEach(fn => {
-          shapeGroup.add(fn(position))
+          shapeGroup.add(fn(position, id, domRects, index))
         })
       }
       rectGroup.add(this.createRect(position, config.rect))

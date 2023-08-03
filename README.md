@@ -51,14 +51,21 @@ document.addEventListener('click', (event) => {
 
 ### 添加自定义图形
 
-默认只会在划词区域渲染一个 Rect 和底部渲染一个 Line，如果需要在划词区域添加其他图形，可以传入 shapeConstructors 参数，shapeConstructors 是一个 ShapeConstructor 类型的数组，ShapeConstructor 是一个函数，接收一个划词区域位置信息的参数，需要返回一个 konva Shape 类型的实例对象
+默认只会在划词区域渲染一个 Rect 和底部渲染一个 Line，如果需要在划词区域添加其他图形，可以传入 shapeConstructors 参数，shapeConstructors 是一个 ShapeConstructor 类型的数组，ShapeConstructor 是一个函数，接收 4 个参数：
+* position：划词区域位置信息
+* id: 划词区域的 id
+* domRects：划词区域的 DOMRect 数组
+* index：当前渲染的 DOMRect 区域的 index
+
+函数需要返回一个 konva Shape 类型的实例对象
 
 ```javascript
 import Konva from 'konva'
 import CanvasHighlighter, { IRectPosition } from 'canvas-highlighter'
 
-// 注意：并不是一个划词区域只会调用一次 createLine 函数，因为划词区域可能被拆分成多个（比如字体大小不同导致的划词区域高度不同），所以 createLine 函数可能会被调用多次
-function createLine(position: IRectPosition) {
+// 注意：并不是一个划词区域只会调用一次 createLine 函数，因为划词区域可能被拆分成多个（比如换行或者字体大小不同导致的划词区域高度不同），所以 createLine 函数可能会被调用多次。
+// 可以根据 domRects.length 判断当前划词区域被拆分为几个，index 表示当前渲染的是第几个。
+function createLine(position: IRectPosition, id: string, domRects: DOMRect[], index: number) {
   const { x, y, width, height } = position
   return new Konva.Line({
     points: [

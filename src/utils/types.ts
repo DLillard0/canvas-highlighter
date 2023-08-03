@@ -7,7 +7,7 @@ export interface IRectPosition {
   height: number
 }
 
-export type ShapeConstructor = (position: IRectPosition) => Konva.Shape
+export type ShapeConstructor = (position: IRectPosition, id: string, domRects: DOMRect[], index: number) => Konva.Shape
 
 export interface IRangeNode {
   path: number[]

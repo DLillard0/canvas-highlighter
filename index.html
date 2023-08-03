@@ -154,8 +154,9 @@
           this.range = this.highlighter.getSelectionRange()
           if (this.range) {
             const { end } = this.highlighter.getSelectionPosition()
+            const scrollTop = document.documentElement.scrollTop
             this.style = {
-              top: (end.y - 35) + 'px',
+              top: (end.y - 35) + scrollTop + 'px',
               left: (end.x + 4) + 'px',
               display: 'inline-block'
             }
