@@ -165,8 +165,9 @@
             // 获取划词区域最后一个节点位置
             const { end } = this.highlighter.getSelectionPosition()
             // 设置高亮按钮位置
+            const scrollTop = document.documentElement.scrollTop
             this.style = {
-              top: (end.y - 35) + 'px',
+              top: (end.y - 35) + scrollTop + 'px',
               left: (end.x + 4) + 'px',
               display: 'inline-block'
             }

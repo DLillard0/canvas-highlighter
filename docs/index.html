@@ -65,7 +65,8 @@
         const { end } = highlighter.getSelectionPosition()
 
         // 设置高亮按钮位置
-        btn.style.top = (end.y - 35) + 'px'
+        const scrollTop = document.documentElement.scrollTop
+        btn.style.top = (end.y - 35) + scrollTop  + 'px'
         btn.style.left = (end.x + 4) + 'px'
         btn.style.display = 'inline-block'
       }
