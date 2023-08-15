@@ -1,5 +1,5 @@
 import { IConfig, defaultConfig } from '../utils/config'
-import { ICanvasHighlighter, IRange } from '../utils/types'
+import { ICanvasHighlighter, IRange, IRectPosition } from '../utils/types'
 import { debounce } from '../utils/utils'
 import Stage from './Stage'
 import RangeFactory from './RangeFactory'
@@ -66,6 +66,10 @@ class CanvasHighlighter implements ICanvasHighlighter {
   updateRange(range: IRange) {
     this.deleteRange(range.id)
     this.addRange(range)
+  }
+
+  getRangePositions(id: string): IRectPosition[] | null {
+    return this.stage.getRangePositions(id)
   }
 
   getAllRange(): IRange[] {

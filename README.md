@@ -161,6 +161,11 @@ deleteRange(id: string): boolean
 updateRange(range: IRange): void
 
 /**
+ * 根据 id 获取 range 相对于 container 的位置信息
+ */
+getRangePositions(id: string): IRectPosition[] | null
+
+/**
  * 获取当前所有 range 的列表
  */
 getAllRange(): IRange[]

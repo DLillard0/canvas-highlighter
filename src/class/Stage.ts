@@ -178,6 +178,11 @@ export default class Stage {
     group && group.destroy()
   }
 
+  getRangePositions(id: string) {
+    const group = this.groups.find(i => i.id === id)
+    return group ? group.positions : null
+  }
+
   clear() {
     this.layer.destroyChildren()
     this.groups = []
